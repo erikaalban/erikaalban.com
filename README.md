@@ -32,8 +32,6 @@ erikaalban.com/
 │   ├── hero.png        # Hero section background
 │   └── photos/         # Gallery images (01-12.jpg)
 ├── CNAME               # Custom domain configuration
-├── pyproject.toml      # Python project configuration
-├── Makefile            # Development commands
 └── README.md           # This file
 ```
 
