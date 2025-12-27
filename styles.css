@@ -278,7 +278,9 @@ nav a:hover {
 }
 
 .social-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 12px 24px;
   background-color: #1a1a1a;
   color: white;
@@ -295,6 +297,17 @@ nav a:hover {
 .social-link:hover {
   background-color: #333;
   color: white;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.social-text {
+  display: inline-block;
 }
 
 .sponsors-section {
@@ -987,5 +1000,11 @@ body.modal-open {
   .social-link {
     padding: 10px 20px;
     font-size: 12px;
+    gap: 6px;
+  }
+
+  .social-icon {
+    width: 18px;
+    height: 18px;
   }
 }
