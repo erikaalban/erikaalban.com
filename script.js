@@ -54,6 +54,12 @@ function initTitlesFilter() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".cards-container .card");
 
+  // Check if elements exist
+  if (filterButtons.length === 0 || cards.length === 0) {
+    console.warn("Filter buttons or cards not found");
+    return;
+  }
+
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       // Remove active class from all buttons
