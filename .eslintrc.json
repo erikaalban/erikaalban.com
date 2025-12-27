@@ -8,8 +8,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "globals": {
+    "gtag": "readonly"
+  },
   "rules": {
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
     "no-console": "off"
   },
   "ignorePatterns": ["node_modules/", "dist/", "build/"]

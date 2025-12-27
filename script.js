@@ -6,8 +6,8 @@
 // 3. Use a service like CORS proxy (not recommended for production)
 
 async function fetchFargoRate() {
-  const membershipId = "9900005871555";
-  const playerName = "Erika Alban";
+  const _membershipId = "9900005871555";
+  const _playerName = "Erika Alban";
 
   // Try to fetch from FargoRate (will likely fail due to CORS)
   // You would need a backend proxy for this to work
@@ -256,9 +256,8 @@ const initPhotoGallery = async () => {
 
   // Initialize PhotoSwipe
   try {
-    const { default: Lightbox } = await import(
-      "https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js"
-    );
+    const { default: Lightbox } =
+      await import("https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js");
 
     const lightbox = new Lightbox({
       gallery: "#photography-gallery",
