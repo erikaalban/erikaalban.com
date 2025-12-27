@@ -65,6 +65,33 @@ Then visit `http://localhost:8000` in your browser.
 
 The contact form uses FormSubmit.co to send emails to `erikalban12@gmail.com`. No backend required!
 
+## 📊 Analytics
+
+The site uses Google Analytics 4 (GA4) to track:
+- Page views and user sessions
+- Navigation link clicks
+- Contact form submissions
+- Photo gallery interactions
+- Menu toggles
+- Scroll depth (25%, 50%, 75%, 100%)
+
+### Setting Up Google Analytics
+
+1. Go to [Google Analytics](https://analytics.google.com/) and sign in with your Google account
+2. Click "Start measuring" or create a new property
+3. Set up a data stream for your website (enter `erikaalban.com`)
+4. Copy your **Measurement ID** (starts with `G-`)
+5. Replace `G-XXXXXXXXXX` in `index.html` (line 13) with your actual Measurement ID
+6. Deploy the changes - analytics will start tracking immediately!
+
+### What You'll See in Analytics
+
+- **Realtime**: See visitors on your site right now
+- **Acquisition**: Where visitors come from (search, direct, social, etc.)
+- **Engagement**: Which pages are most popular, scroll depth, time on site
+- **Events**: Navigation clicks, form submissions, photo views
+- **Demographics**: Location, device type, browser used
+
 ## 📄 License
 
 All rights reserved. Personal website content.

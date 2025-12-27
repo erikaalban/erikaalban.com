@@ -353,3 +353,81 @@ if (document.readyState === "loading") {
 } else {
   initPhotoGallery();
 }
+
+// Google Analytics 4 Event Tracking
+document.addEventListener("DOMContentLoaded", () => {
+  // Helper function to send GA4 events
+  const trackEvent = (eventName, eventParams = {}) => {
+    if (typeof gtag !== "undefined") {
+      gtag("event", eventName, eventParams);
+    }
+  };
+
+  // Track navigation link clicks
+  const navLinks = document.querySelectorAll(".nav-menu a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const section = link.getAttribute("href").replace("#", "") || "home";
+      trackEvent("navigation_click", {
+        section: section,
+        link_text: link.textContent.trim(),
+      });
+    });
+  });
+
+  // Track contact form submissions
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", () => {
+      trackEvent("contact_form_submit", {
+        form_location: "contact_section",
+      });
+    });
+  }
+
+  // Track photo gallery interactions
+  const galleryContainer = document.getElementById("photography-gallery");
+  if (galleryContainer) {
+    galleryContainer.addEventListener("click", (e) => {
+      if (e.target.tagName === "IMG") {
+        const imgSrc = e.target.src;
+        const photoNumber = imgSrc.match(/(\d+)\.jpg/)?.[1] || "unknown";
+        trackEvent("photo_click", {
+          photo_number: photoNumber,
+          photo_src: imgSrc.split("/").pop(),
+        });
+      }
+    });
+  }
+
+  // Track hamburger menu toggles
+  const hamburger = document.querySelector(".hamburger");
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      const isOpen = hamburger.classList.contains("active");
+      trackEvent("menu_toggle", {
+        action: isOpen ? "open" : "close",
+      });
+    });
+  }
+
+  // Track scroll depth (optional - tracks when users scroll 25%, 50%, 75%, 100%)
+  let scrollDepthTracked = { 25: false, 50: false, 75: false, 100: false };
+  window.addEventListener("scroll", () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollPercent = Math.round(
+      ((scrollTop + windowHeight) / documentHeight) * 100
+    );
+
+    [25, 50, 75, 100].forEach((depth) => {
+      if (scrollPercent >= depth && !scrollDepthTracked[depth]) {
+        scrollDepthTracked[depth] = true;
+        trackEvent("scroll_depth", {
+          depth: depth,
+        });
+      }
+    });
+  });
+});
