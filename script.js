@@ -49,6 +49,37 @@ function updateFargoDisplay(data) {
 // Initialize on page load
 fetchFargoRate();
 
+// Titles and Achievements Filtering
+function initTitlesFilter() {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".cards-container .card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remove active class from all buttons
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      // Add active class to clicked button
+      button.classList.add("active");
+
+      const filterValue = button.getAttribute("data-filter");
+
+      // Filter cards
+      cards.forEach((card) => {
+        if (filterValue === "all") {
+          card.classList.remove("hidden");
+        } else {
+          const cardFilter = card.getAttribute("data-filter");
+          if (cardFilter === filterValue) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        }
+      });
+    });
+  });
+}
+
 // Hamburger menu toggle
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
@@ -410,6 +441,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Initialize titles filter
+  initTitlesFilter();
 
   // Track scroll depth (optional - tracks when users scroll 25%, 50%, 75%, 100%)
   let scrollDepthTracked = { 25: false, 50: false, 75: false, 100: false };
