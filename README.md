@@ -5,11 +5,13 @@ Personal website for competitive pool player Erika Alban, showcasing achievement
 ## 🎱 Features
 
 - **About Section**: Bio and FargoRate information
-- **Titles & Achievements**: Comprehensive list of tournament wins and accomplishments
-- **Photo Gallery**: Interactive photo gallery using PhotoSwipe
-- **Contact Form**: Email contact form for inquiries
+- **Titles & Achievements**: Comprehensive list of tournament wins and accomplishments with filterable categories (Title, 1st Place, Runner-Up)
+- **Photo Gallery**: Interactive photo gallery using PhotoSwipe lightbox
+- **Contact Form**: Email contact form for inquiries via FormSubmit.co
+- **Social Media Links**: Instagram and Facebook links with SVG icons
 - **Responsive Design**: Mobile-friendly with hamburger menu navigation
 - **Custom Domain**: Configured for `erikaalban.com`
+- **Analytics**: Google Analytics 4 integration for tracking user interactions
 
 ## 🛠️ Tech Stack
 
@@ -30,6 +32,8 @@ erikaalban.com/
 │   ├── hero.png        # Hero section background
 │   └── photos/         # Gallery images (01-12.jpg)
 ├── CNAME               # Custom domain configuration
+├── pyproject.toml      # Python project configuration
+├── Makefile            # Development commands
 └── README.md           # This file
 ```
 
@@ -67,30 +71,7 @@ The contact form uses FormSubmit.co to send emails to `erikalban12@gmail.com`. N
 
 ## 📊 Analytics
 
-The site uses Google Analytics 4 (GA4) to track:
-- Page views and user sessions
-- Navigation link clicks
-- Contact form submissions
-- Photo gallery interactions
-- Menu toggles
-- Scroll depth (25%, 50%, 75%, 100%)
-
-### Setting Up Google Analytics
-
-1. Go to [Google Analytics](https://analytics.google.com/) and sign in with your Google account
-2. Click "Start measuring" or create a new property
-3. Set up a data stream for your website (enter `erikaalban.com`)
-4. Copy your **Measurement ID** (starts with `G-`)
-5. Replace `G-XXXXXXXXXX` in `index.html` (line 13) with your actual Measurement ID
-6. Deploy the changes - analytics will start tracking immediately!
-
-### What You'll See in Analytics
-
-- **Realtime**: See visitors on your site right now
-- **Acquisition**: Where visitors come from (search, direct, social, etc.)
-- **Engagement**: Which pages are most popular, scroll depth, time on site
-- **Events**: Navigation clicks, form submissions, photo views
-- **Demographics**: Location, device type, browser used
+The site uses Google Analytics 4 (GA4) to track page views, user sessions, navigation clicks, contact form submissions, photo gallery interactions, menu toggles, and scroll depth.
 
 ## 📄 License
 
