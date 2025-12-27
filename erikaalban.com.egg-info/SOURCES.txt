@@ -1,7 +1,0 @@
-README.md
-pyproject.toml
-erikaalban.com.egg-info/PKG-INFO
-erikaalban.com.egg-info/SOURCES.txt
-erikaalban.com.egg-info/dependency_links.txt
-erikaalban.com.egg-info/requires.txt
-erikaalban.com.egg-info/top_level.txt

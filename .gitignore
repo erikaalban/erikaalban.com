@@ -30,6 +30,13 @@ yarn-error.log*
 node_modules/
 yarn.lock
 
+# Python (if needed in future)
+.venv/
+venv/
+*.egg-info/
+__pycache__/
+*.pyc
+
 # Environment variables
 .env
 .env.local
