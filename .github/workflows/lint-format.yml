@@ -1,0 +1,86 @@
+name: Lint and Format
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Run formatters and linters
+        run: |
+          # Format code
+          npm run format || true
+          
+          # Fix linting issues automatically
+          npm run lint:fix || true
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            git diff
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.check-changes.outputs.has_changes == 'true'
+        id: create-pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: auto-format and lint code"
+          title: "chore: auto-format and lint code"
+          body: |
+            This PR was automatically created by the lint and format workflow.
+            
+            Changes include:
+            - Code formatting with Prettier
+            - Linting fixes with ESLint and Stylelint
+            
+            This PR will be automatically merged.
+          branch: auto-format-lint
+          delete-branch: true
+          labels: |
+            automated
+            code-quality
+
+      - name: Auto-merge PR
+        if: steps.check-changes.outputs.has_changes == 'true' && steps.create-pr.outputs.pull-request-number != ''
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          command: merge
+          number: ${{ steps.create-pr.outputs.pull-request-number }}
+

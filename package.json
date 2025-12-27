@@ -1,0 +1,20 @@
+{
+  "name": "erikaalban.com",
+  "version": "1.0.0",
+  "description": "Personal website for competitive pool player Erika Alban",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.{html,css,js}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js}\"",
+    "lint": "eslint . --ext .js && stylelint \"**/*.css\"",
+    "lint:fix": "eslint . --ext .js --fix && stylelint \"**/*.css\" --fix",
+    "check": "npm run format:check && npm run lint"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}
+

@@ -31,6 +31,8 @@ erikaalban.com/
 ├── images/
 │   ├── hero.png        # Hero section background
 │   └── photos/         # Gallery images (01-12.jpg)
+├── package.json        # Node.js dependencies and scripts
+├── Makefile            # Development commands
 ├── CNAME               # Custom domain configuration
 └── README.md           # This file
 ```
@@ -62,6 +64,34 @@ npx http-server
 ```
 
 Then visit `http://localhost:8000` in your browser.
+
+### Code Quality
+
+This project uses Prettier for formatting and ESLint/Stylelint for linting:
+
+```bash
+# Install dependencies
+make install
+# or
+npm install
+
+# Format code
+make format
+# or
+npm run format
+
+# Lint code
+make lint
+# or
+npm run lint
+
+# Auto-fix issues
+make fix
+# or
+npm run lint:fix
+```
+
+The GitHub Actions workflow automatically formats and lints code on push, creating PRs for any changes.
 
 ## 📧 Contact Form
 
