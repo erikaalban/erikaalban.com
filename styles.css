@@ -314,8 +314,55 @@ nav a:hover {
 }
 
 .sponsors-section {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.sponsors-intro {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.sponsors-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.sponsor-item {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sponsor-logo {
+  max-width: 250px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(0%);
+  transition: filter 0.3s ease;
+}
+
+.sponsor-item:hover .sponsor-logo {
+  filter: grayscale(0%);
 }
 
 .sponsors-content {
@@ -1014,5 +1061,19 @@ body.modal-open {
   .social-icon {
     width: 18px;
     height: 18px;
+  }
+
+  .sponsors-gallery {
+    gap: 40px;
+    padding: 10px 0;
+  }
+
+  .sponsor-item {
+    padding: 15px;
+  }
+
+  .sponsor-logo {
+    max-width: 200px;
+    max-height: 120px;
   }
 }
