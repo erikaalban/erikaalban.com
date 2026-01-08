@@ -317,6 +317,12 @@ nav a:hover {
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
+  overflow: hidden;
+}
+
+.sponsors-section img {
+  max-width: 100%;
+  height: auto;
 }
 
 .sponsors-intro {
@@ -333,6 +339,9 @@ nav a:hover {
   gap: 60px;
   flex-wrap: wrap;
   padding: 20px 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sponsor-item {
@@ -346,6 +355,8 @@ nav a:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 300px;
   width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 
 .sponsor-item:hover {
@@ -354,16 +365,13 @@ nav a:hover {
 }
 
 .sponsor-logo {
-  max-width: 100%;
-  max-height: 120px;
+  max-width: 100% !important;
+  max-height: 120px !important;
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
-}
-
-.sponsor-item:hover .sponsor-logo {
-  filter: grayscale(0%);
+  margin: 0 auto;
 }
 
 .sponsors-content {
@@ -1071,10 +1079,11 @@ body.modal-open {
 
   .sponsor-item {
     padding: 15px;
+    max-width: 250px;
   }
 
   .sponsor-logo {
-    max-width: 200px;
-    max-height: 120px;
+    max-width: 100% !important;
+    max-height: 100px !important;
   }
 }
