@@ -1048,7 +1048,7 @@ body.modal-open {
 
   .sponsors-gallery img {
     max-width: 140px !important;
-    height: 50px !important;
+    height: auto !important;
     margin: 10px !important;
   }
 }
