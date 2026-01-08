@@ -198,7 +198,8 @@ nav a:hover {
 .titles-section h2,
 .about-section h2,
 .contact-section h2,
-.sponsors-section h2 {
+.sponsors-section h2,
+.media-section h2 {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 40px;
@@ -206,6 +207,27 @@ nav a:hover {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.titles-section h2::before,
+.titles-section h2::after,
+.about-section h2::before,
+.about-section h2::after,
+.contact-section h2::before,
+.contact-section h2::after,
+.sponsors-section h2::before,
+.sponsors-section h2::after,
+.media-section h2::before,
+.media-section h2::after {
+  content: "";
+  flex: 1;
+  max-width: 100px;
+  height: 3px;
+  background-color: #1a1a1a;
 }
 
 .filter-buttons {
@@ -334,13 +356,22 @@ nav a:hover {
 
 .sponsors-gallery {
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 20px;
+  background-color: #f9f9f9;
+  border-top: 3px solid #1a1a1a;
+  border-bottom: 3px solid #1a1a1a;
+  margin-top: 20px;
 }
 
 .sponsors-gallery img {
   display: inline-block;
   vertical-align: middle;
   margin: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sponsors-gallery img:hover {
+  transform: scale(1.05);
 }
 
 .sponsors-content {
@@ -404,16 +435,6 @@ nav a:hover {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-}
-
-.media-section h2 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  font-family: "Georgia", "Times New Roman", serif;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .photography-gallery-container {
