@@ -349,14 +349,15 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 15px;
   background-color: white;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 260px;
-  max-width: 260px;
+  width: 200px;
+  max-width: 200px;
   min-width: 0;
-  height: auto;
+  height: 120px;
+  max-height: 120px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -367,9 +368,9 @@ nav a:hover {
 }
 
 .sponsor-logo {
-  width: auto !important;
-  max-width: 240px !important;
-  max-height: 100px !important;
+  width: 100% !important;
+  max-width: 180px !important;
+  max-height: 90px !important;
   height: auto !important;
   object-fit: contain !important;
   display: block !important;
@@ -1080,13 +1081,15 @@ body.modal-open {
   }
 
   .sponsor-item {
-    padding: 15px;
-    width: 220px;
-    max-width: 220px;
+    padding: 12px;
+    width: 180px;
+    max-width: 180px;
+    height: 100px;
+    max-height: 100px;
   }
 
   .sponsor-logo {
-    max-width: 200px !important;
-    max-height: 90px !important;
+    max-width: 160px !important;
+    max-height: 80px !important;
   }
 }
