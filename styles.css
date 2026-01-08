@@ -353,8 +353,8 @@ nav a:hover {
   background-color: white;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 280px;
-  max-width: 280px;
+  width: 260px;
+  max-width: 260px;
   min-width: 0;
   height: auto;
   overflow: hidden;
@@ -367,9 +367,9 @@ nav a:hover {
 }
 
 .sponsor-logo {
-  width: 100% !important;
-  max-width: 100% !important;
-  max-height: 120px !important;
+  width: auto !important;
+  max-width: 240px !important;
+  max-height: 100px !important;
   height: auto !important;
   object-fit: contain !important;
   display: block !important;
@@ -1081,14 +1081,12 @@ body.modal-open {
 
   .sponsor-item {
     padding: 15px;
-    width: 240px;
-    max-width: 240px;
+    width: 220px;
+    max-width: 220px;
   }
 
   .sponsor-logo {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 100px !important;
-    height: auto !important;
+    max-width: 200px !important;
+    max-height: 90px !important;
   }
 }
