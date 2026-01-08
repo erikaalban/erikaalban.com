@@ -437,6 +437,10 @@ nav a:hover {
   overflow-x: hidden;
 }
 
+.media-section h2 {
+  width: 100%;
+}
+
 .photography-gallery-container {
   width: 100%;
   max-width: 100%;
