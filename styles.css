@@ -345,7 +345,7 @@ nav a:hover {
 }
 
 .sponsor-item {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -353,10 +353,12 @@ nav a:hover {
   background-color: white;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 300px;
-  width: 100%;
+  width: 280px;
+  max-width: 280px;
+  min-width: 0;
   height: auto;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .sponsor-item:hover {
@@ -365,12 +367,12 @@ nav a:hover {
 }
 
 .sponsor-logo {
+  width: 100% !important;
   max-width: 100% !important;
   max-height: 120px !important;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
   margin: 0 auto;
 }
 
@@ -1079,11 +1081,14 @@ body.modal-open {
 
   .sponsor-item {
     padding: 15px;
-    max-width: 250px;
+    width: 240px;
+    max-width: 240px;
   }
 
   .sponsor-logo {
+    width: 100% !important;
     max-width: 100% !important;
     max-height: 100px !important;
+    height: auto !important;
   }
 }
