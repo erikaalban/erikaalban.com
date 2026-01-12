@@ -1114,19 +1114,13 @@ body.modal-open {
 @media (min-width: 1600px) {
   .content-wrapper {
     max-width: 1400px;
-    padding: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 80px;
   }
 
-  .hero-wrapper h1 {
-    font-size: 72px;
-  }
-
-  .hero-wrapper .subtitle {
-    font-size: 22px;
-  }
-
-  .header-content {
-    padding: 100px 80px;
+  .hero-wrapper .header-content {
+    max-width: 700px;
   }
 
   .titles-section h2,
@@ -1138,7 +1132,7 @@ body.modal-open {
   }
 
   .about-cards-container {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 
@@ -1164,11 +1158,13 @@ body.modal-open {
   }
 
   .sponsors-section {
-    max-width: 1200px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .contact-section {
     max-width: 700px;
+    margin: 0 auto;
   }
 }
 
@@ -1176,49 +1172,26 @@ body.modal-open {
    ULTRAWIDE SCREENS (2200px+)
    ======================================== */
 @media (min-width: 2200px) {
-  body {
-    background-color: #111;
-  }
-
-  nav {
-    max-width: 2000px;
-    margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 0 0 8px 8px;
-  }
-
-  .hero-wrapper,
-  .content-wrapper,
-  footer {
+  .hero-wrapper {
     max-width: 1800px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #ffffff;
   }
 
-  .hero-wrapper {
-    margin-top: 80px;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+  .hero-wrapper .header-content {
+    max-width: 800px;
+    padding: 100px 80px;
   }
 
   .content-wrapper {
     max-width: 1600px;
-    padding: 80px;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+    padding: 80px 100px;
   }
 
   footer {
     max-width: 1800px;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
-  }
-
-  .hero-wrapper h1 {
-    font-size: 80px;
-  }
-
-  .hero-wrapper .subtitle {
-    font-size: 24px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .titles-section h2,
@@ -1230,7 +1203,7 @@ body.modal-open {
   }
 
   .about-cards-container {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
   }
 
   .about-card {
@@ -1268,7 +1241,7 @@ body.modal-open {
   }
 
   .sponsors-section {
-    max-width: 1300px;
+    max-width: 1200px;
   }
 
   .sponsors-gallery img {
@@ -1289,8 +1262,7 @@ body.modal-open {
    4K SCREENS (2800px+)
    ======================================== */
 @media (min-width: 2800px) {
-  .hero-wrapper,
-  footer {
+  .hero-wrapper {
     max-width: 2200px;
   }
 
@@ -1298,8 +1270,8 @@ body.modal-open {
     max-width: 1900px;
   }
 
-  .hero-wrapper h1 {
-    font-size: 88px;
+  footer {
+    max-width: 2200px;
   }
 
   .titles-section h2,
