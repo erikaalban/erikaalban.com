@@ -669,14 +669,17 @@ footer {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-footer a {
-  color: #8b7355;
+footer a,
+footer a:link,
+footer a:visited {
+  color: #8b7355 !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-footer a:hover {
-  color: #6b5344;
+footer a:hover,
+footer a:active {
+  color: #6b5344 !important;
   text-decoration: underline;
 }
 
