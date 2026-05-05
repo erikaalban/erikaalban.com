@@ -4,8 +4,7 @@
 const FARGO_MEMBERSHIP_ID = "9900005871555";
 const FARGO_READABLE_ID = "1148110";
 const FARGO_SEARCH_NAMES = ["Erika Alban"];
-const FARGO_INDEX_API =
-  "https://dashboard.fargorate.com/api/indexsearch";
+const FARGO_INDEX_API = "https://dashboard.fargorate.com/api/indexsearch";
 
 const FARGO_FALLBACK = {
   rating: 521,
@@ -14,10 +13,7 @@ const FARGO_FALLBACK = {
 };
 
 async function fetchFargoRate() {
-  const queries = [
-    FARGO_READABLE_ID,
-    ...FARGO_SEARCH_NAMES,
-  ];
+  const queries = [FARGO_READABLE_ID, ...FARGO_SEARCH_NAMES];
 
   try {
     let player = null;
@@ -41,9 +37,7 @@ async function fetchFargoRate() {
       const rating = Math.round(
         Number.parseFloat(String(player.effectiveRating || player.rating))
       );
-      const robustness = Math.round(
-        Number.parseInt(player.robustness, 10)
-      );
+      const robustness = Math.round(Number.parseInt(player.robustness, 10));
       updateFargoDisplay({
         rating,
         robustness,
