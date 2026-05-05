@@ -29,7 +29,7 @@ erikaalban.com/
 ├── styles.css          # All styles
 ├── script.js           # JavaScript functionality
 ├── images/
-│   ├── hero.png        # Hero section background
+│   ├── hero.jpg        # Hero section background
 │   └── photos/         # Gallery images (01-12.jpg)
 ├── package.json        # Node.js dependencies and scripts
 ├── Makefile            # Development commands
