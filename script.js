@@ -1,48 +1,93 @@
-// FargoRate fetching
-// Note: FargoRate.com doesn't have a public API, so direct fetching will face CORS issues.
-// Options:
-// 1. Update manually by changing the values below
-// 2. Set up a backend proxy/server to fetch and cache the data
-// 3. Use a service like CORS proxy (not recommended for production)
+// FargoRate: live data via FargoRate’s dashboard API (same endpoint FairMatch uses).
+// `indexsearch` does not match raw membership # — use readableId or name as search q.
+
+const FARGO_MEMBERSHIP_ID = "9900005871555";
+const FARGO_READABLE_ID = "1148110";
+const FARGO_SEARCH_NAMES = ["Erika Alban"];
+const FARGO_INDEX_API =
+  "https://dashboard.fargorate.com/api/indexsearch";
+
+const FARGO_FALLBACK = {
+  rating: 521,
+  robustness: 3956,
+  location: "NYC, NY",
+};
 
 async function fetchFargoRate() {
-  const _membershipId = "9900005871555";
-  const _playerName = "Erika Alban";
+  const queries = [
+    FARGO_READABLE_ID,
+    ...FARGO_SEARCH_NAMES,
+  ];
 
-  // Try to fetch from FargoRate (will likely fail due to CORS)
-  // You would need a backend proxy for this to work
   try {
-    // Example: If you set up a backend endpoint
-    // const response = await fetch(`/api/fargorate/${membershipId}`);
-    // const data = await response.json();
-    // updateFargoDisplay(data);
+    let player = null;
+    for (const q of queries) {
+      const url = `${FARGO_INDEX_API}?q=${encodeURIComponent(q)}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        continue;
+      }
+      const json = await response.json();
+      const list = json.value || [];
+      player =
+        list.find((p) => p.membershipId === FARGO_MEMBERSHIP_ID) ||
+        (list.length === 1 ? list[0] : null);
+      if (player) {
+        break;
+      }
+    }
 
-    // For now, using static values
-    updateFargoDisplay({
-      rating: 511,
-      robustness: 3271,
-      lastUpdated: new Date().toLocaleDateString(),
-    });
-  } catch (error) {
-    console.log("Using static FargoRate data");
-    // Fallback to static values
-    updateFargoDisplay({
-      rating: 511,
-      robustness: 3271,
-      lastUpdated: new Date().toLocaleDateString(),
-    });
+    if (player) {
+      const rating = Math.round(
+        Number.parseFloat(String(player.effectiveRating || player.rating))
+      );
+      const robustness = Math.round(
+        Number.parseInt(player.robustness, 10)
+      );
+      updateFargoDisplay({
+        rating,
+        robustness,
+        location: formatFargoLocation(player.location),
+        lastLoadedLabel: new Date().toLocaleDateString(),
+      });
+      return;
+    }
+  } catch (e) {
+    console.warn("FargoRate fetch failed:", e);
   }
+
+  updateFargoDisplay({
+    rating: FARGO_FALLBACK.rating,
+    robustness: FARGO_FALLBACK.robustness,
+    location: FARGO_FALLBACK.location,
+    lastLoadedLabel: "FargoRate unreachable (showing cached)",
+  });
+}
+
+function formatFargoLocation(raw) {
+  if (!raw || typeof raw !== "string") {
+    return FARGO_FALLBACK.location;
+  }
+  return raw.replace(/\bNyc\b/i, "NYC");
 }
 
 function updateFargoDisplay(data) {
   const ratingEl = document.getElementById("fargo-rating");
   const updateDateEl = document.getElementById("fargo-update-date");
+  const robustnessEl = document.getElementById("fargo-robustness");
+  const locationEl = document.getElementById("fargo-location");
 
   if (ratingEl) {
     ratingEl.textContent = data.rating;
   }
+  if (robustnessEl) {
+    robustnessEl.textContent = data.robustness;
+  }
+  if (locationEl && data.location) {
+    locationEl.textContent = data.location;
+  }
   if (updateDateEl) {
-    updateDateEl.textContent = data.lastUpdated;
+    updateDateEl.textContent = data.lastLoadedLabel;
   }
 }
 
